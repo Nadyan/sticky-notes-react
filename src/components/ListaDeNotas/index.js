@@ -5,12 +5,22 @@ import './style.css';
 
 export default class ListaDeNotas extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <ul className="lista-notas">
-                <li className="lista-notas_item">
-                    <CardNota />
-                </li>
+                {
+                    this.props.notas.map((nota, index) => {
+                        return (
+                            <li className="lista-notas_item" key={index}>
+                                <CardNota titulo={nota.titulo} texto={nota.texto}/>
+                            </li>
+                        );
+                    })
+                }
             </ul>
         );
     }
