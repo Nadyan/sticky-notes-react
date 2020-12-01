@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Formulario from './components/Formulario/';
 import ListaDeNotas from './components/ListaDeNotas/';
+import ListaDeCategorias from './components/ListaDeCategorias/';
 
 import './assets/App.css';
 import './assets/index.css';
@@ -11,7 +12,8 @@ export default class App extends Component {
     super();
 
     this.state = {
-      notas: []
+      notas: [],
+      categorias: [],
     };
   }
 
@@ -37,14 +39,28 @@ export default class App extends Component {
     });
   }
 
+  criarCategoria(novaCategoria) {
+    const novoArrayCategorias = [...this.state.categorias, novaCategoria];
+
+    this.setState({
+      categorias: novoArrayCategorias
+    });
+  }
+
   render() {
     return (
       <div className="conteudo">
         <Formulario criarNota={this.criarNota.bind(this)} />
-        <ListaDeNotas 
-          notas={this.state.notas} 
-          deletaNota={this.deletaNota.bind(this)} 
-        />
+        <main className="conteudo-principal">
+          <ListaDeCategorias 
+            categorias={this.state.categorias}
+            criarCategoria={this.criarCategoria.bind(this)}
+          />
+          <ListaDeNotas 
+           notas={this.state.notas} 
+           deletaNota={this.deletaNota.bind(this)} 
+          />
+        </main>
       </div>
     );
   }
