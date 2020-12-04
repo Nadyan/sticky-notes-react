@@ -17,7 +17,11 @@ export default class App extends Component {
     this.categorias = new Categorias();
     this.notas = new ArrayNotas();
 
-    /*
+    /* 
+    // a variável state não é usada, pois os dados
+    // estão sendo salvos nas classes ArrayNotas e Categorias
+    // para não redesenhar toda a aplicação toda vez que o
+    // state muda
     this.state = {
       //notas: [],
       //categorias: [],
