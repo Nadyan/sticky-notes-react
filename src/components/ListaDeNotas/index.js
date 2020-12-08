@@ -11,10 +11,18 @@ export default class ListaDeNotas extends Component {
         this.state = {
             notas: []
         }
+
+        // isso é feito para a funcao do DidMount e WillUnmout ser a mesma, 
+        // pois o bind retorna uma funcao diferente a cada chamada:
+        this._novasNotas = this._novasNotas.bind(this); 
     }
 
     componentDidMount() {
-        this.props.notas.inscrever(this._novasNotas.bind(this));
+        this.props.notas.inscrever(this._novasNotas);
+    }
+
+    componentWillUnmount() {
+        this.props.notas.desinscrever(this._novasNotas);
     }
 
     _novasNotas(notas) {

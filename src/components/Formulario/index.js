@@ -14,10 +14,18 @@ export default class Formulario extends Component {
         this.state = {
             categorias: []
         }
+
+        // isso é feito para a funcao do DidMount e WillUnmout ser a mesma, 
+        // pois o bind retorna uma funcao diferente a cada chamada:
+        this._novasCategorias = this._novasCategorias.bind(this);
     }
 
     componentDidMount() {
-        this.props.categorias.inscrever(this._novasCategorias.bind(this));
+        this.props.categorias.inscrever(this._novasCategorias);
+    }
+
+    componentWillUnmount() {
+        this.props.categorias.desinscrever(this._novasCategorias);
     }
 
     _novasCategorias(categorias) {

@@ -17,8 +17,12 @@ export default class ArrayNotas {
     }
 
        /* Métodos Observable */
-       inscrever(func) {
+    inscrever(func) {
         this._inscritos.push(func);
+    }
+
+    desinscrever(func) {
+        this._inscritos = this._inscritos.filter(f => f !== func);
     }
 
     notificar() {
