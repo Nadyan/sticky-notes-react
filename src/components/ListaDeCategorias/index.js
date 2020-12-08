@@ -5,9 +5,19 @@ import './style.css';
 export default class ListaDeCategorias extends Component {
 
     constructor(props) {
-        // Construtor assim não é necessário.,
-        // pois o react ja faz por default.
         super(props);
+
+        this.state = {
+            categorias: []
+        }
+    }
+
+    componentDidMount() {
+        this.props.categorias.inscrever(this._novasCategorias.bind(this));
+    }
+
+    _novasCategorias(categorias) {
+        this.setState({...this.state, categorias});
     }
 
     _handleEventoInput(evento) {
@@ -22,7 +32,7 @@ export default class ListaDeCategorias extends Component {
             <div className="lista-categorias">
                 <ul className="lista-categorias_lista">
                     {
-                        this.props.categorias.map((categoria, index) => {
+                        this.state.categorias.map((categoria, index) => {
                             return (
                                 <li className="lista-categorias_item" key={index}>{categoria}</li>
                             );

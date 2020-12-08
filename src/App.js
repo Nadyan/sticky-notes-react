@@ -72,17 +72,17 @@ export default class App extends Component {
     return (
       <div className="conteudo">
         <Formulario 
-          criarNota={this.notas.criarNota}
-          categorias={this.categorias.categorias}
+          criarNota={this.notas.criarNota.bind(this.notas)}
+          categorias={this.categorias}
         />
         <main className="conteudo-principal">
           <ListaDeCategorias 
-            categorias={this.categorias.categorias}
-            criarCategoria={this.categorias.criarCategoria}
+            categorias={this.categorias}
+            criarCategoria={this.categorias.criarCategoria.bind(this.categorias)}
           />
           <ListaDeNotas 
-            notas={this.notas.notas} 
-            deletaNota={this.notas.deletaNota}
+            notas={this.notas} 
+            deletaNota={this.notas.deletaNota.bind(this.notas)}
           />
         </main>
       </div>

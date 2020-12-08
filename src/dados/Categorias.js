@@ -11,6 +11,7 @@ export default class Categorias {
 
     criarCategoria(novaCategoria) {
         this.categorias.push(novaCategoria);
+        this.notificar();
     }
 
     /* Métodos Observable */

@@ -8,10 +8,12 @@ export default class ArrayNotas {
     criarNota(titulo, texto, categoria) {
         const novaNota = new Nota(titulo, texto, categoria);
         this.notas.push(novaNota);
+        this.notificar();
     }
 
     deletaNota(index) {
         this.notas.splice(index, 1);
+        this.notificar();
     }
 
        /* Métodos Observable */
